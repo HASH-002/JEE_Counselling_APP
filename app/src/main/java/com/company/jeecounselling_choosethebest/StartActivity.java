@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class StartActivity extends AppCompatActivity {
 
     private LinearLayout linearLayout;
@@ -36,5 +38,15 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
+    }
+    // No signing in always
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            startActivity(new Intent(StartActivity.this , MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
+        }
     }
 }

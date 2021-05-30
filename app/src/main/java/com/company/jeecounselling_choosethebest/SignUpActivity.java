@@ -77,8 +77,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) {
                     email.setError("Enter valid email");
                     email.requestFocus();
-                    return;
-                } else if (txtPassword.length() < 8) {
+                } else if (txtPassword.length() < 5) {
                     Toast.makeText(SignUpActivity.this, "Password should have atleast 8 characters", Toast.LENGTH_SHORT).show();
                 } else {
                     registerUser(txtfirstname, txtlastname, txtEmail, txtPassword);
@@ -98,7 +97,9 @@ public class SignUpActivity extends AppCompatActivity {
                 map.put("firstname" , firstname);
                 map.put("lastname" , lastname);
                 map.put("email", email);
+                map.put("password", password);
                 map.put("id" , mAuth.getCurrentUser().getUid());
+                map.put("imageUrl","default");
 
                 mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

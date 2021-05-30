@@ -1,11 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.JEECounsellingChooseTheBEST"
-        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.JEECounsellingChooseTheBEST" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/MyColor</item>
         <item name="colorPrimaryVariant">@color/MyColor</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -14,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="android:textColor">@color/MyColor</item>
+    </style>
+
 </resources>
