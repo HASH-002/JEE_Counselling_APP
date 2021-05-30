@@ -44,9 +44,21 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/button_background"
-            android:text="Register"
+            android:text="New User ? Click here to register"
             android:textAllCaps="false"
-            android:id="@+id/register"/>
+            android:id="@+id/register_user_start_activity"/>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:text="Click here to register as a Counsellor"
+            android:textAllCaps="false"
+            android:id="@+id/register_counsellor_start_activity"/>
 
     </LinearLayout>
 

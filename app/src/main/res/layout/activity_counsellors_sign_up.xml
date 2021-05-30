@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="12dp"
-    android:background="@color/ActivityBgColor"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:gravity="center"
+android:padding="12dp"
+android:background="@color/ActivityBgColor"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".CounsellorsSignUpActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_marginTop="15dp"
         android:hint="Firstname"
         android:padding="10dp"
-        android:id="@+id/firstname"/>
+        android:id="@+id/firstname_counsellor"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         android:layout_marginTop="15dp"
         android:hint="Lastname"
         android:padding="10dp"
-        android:id="@+id/lastname"/>
+        android:id="@+id/lastname_counsellor"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
         android:layout_marginTop="15dp"
         android:hint="Email"
         android:padding="10dp"
-        android:id="@+id/email"/>
+        android:id="@+id/email_counsellor"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -52,22 +52,49 @@
         android:layout_marginTop="15dp"
         android:hint="Password"
         android:padding="10dp"
-        android:id="@+id/password"/>
+        android:id="@+id/password_counsellor"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginTop="15dp"
+        android:hint="Experience"
+        android:padding="10dp"
+        android:id="@+id/experience_counsellor"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginTop="15dp"
+        android:hint="Skills"
+        android:padding="10dp"
+        android:id="@+id/skills_counsellor"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginTop="15dp"
+        android:hint="Achievements"
+        android:padding="10dp"
+        android:id="@+id/achievements_counsellor"/>
 
     <Button
-        android:id="@+id/register_user_signUp_activity"
+        android:id="@+id/register_counsellor_signUp_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15sp"
         android:background="@drawable/button_background"
         android:padding="10dp"
-        android:text="REGISTER" />
+        android:text="REGISTER and Join Counsellors" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already a user? LogIn"
+        android:text="Already a Counsellor? LogIn"
         android:layout_marginTop="15dp"
-        android:id="@+id/login_user"/>
+        android:id="@+id/login_counsellor"/>
 
 </LinearLayout>
