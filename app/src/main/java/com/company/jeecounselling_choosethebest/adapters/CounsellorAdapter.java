@@ -1,6 +1,7 @@
 package com.company.jeecounselling_choosethebest.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.company.jeecounselling_choosethebest.MessageActivity;
 import com.company.jeecounselling_choosethebest.R;
 import com.company.jeecounselling_choosethebest.model.Counsellors;
 
@@ -59,14 +61,15 @@ public class CounsellorAdapter extends RecyclerView.Adapter<CounsellorAdapter.Vi
 
 
 
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context, MessageActivity.class);
-//                i.putExtra("userid",user.getId());
-//                context.startActivity(i);
-//            }
-//        });
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, MessageActivity.class);
+                i.putExtra("userid",counsellor.getId());
+                i.putExtra("fromPerson", "Counsellors");
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

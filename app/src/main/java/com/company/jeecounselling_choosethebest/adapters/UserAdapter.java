@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.company.jeecounselling_choosethebest.MessageActivity;
 import com.company.jeecounselling_choosethebest.R;
 import com.company.jeecounselling_choosethebest.model.Users;
 
@@ -49,15 +50,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             Glide.with(context).load(user.getImageUrl()).into(holder.profileImage);
 
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, MessageActivity.class);
+                i.putExtra("userid",user.getId());
+                i.putExtra("fromPerson", "Users");
+                context.startActivity(i);
+            }
+        });
 
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context, MessageActivity.class);
-//                i.putExtra("userid",user.getId());
-//                context.startActivity(i);
-//            }
-//        });
     }
 
     @Override

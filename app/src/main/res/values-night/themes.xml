@@ -10,11 +10,12 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/MyColor</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+    <style name="Theme.TextAppearance"
+        parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
         <item name="android:textColor">@color/MyColor</item>
     </style>
 
