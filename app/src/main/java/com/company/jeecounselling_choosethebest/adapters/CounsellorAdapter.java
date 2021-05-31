@@ -42,7 +42,7 @@ public class CounsellorAdapter extends RecyclerView.Adapter<CounsellorAdapter.Vi
 
         Counsellors counsellor = mCounsellors.get(position);
 
-        String name = counsellor.getFirstname()+" "+counsellor.getLastname();
+        String name = counsellor.getFirstname() + " " + counsellor.getLastname();
         holder.userName.setText(name);
 
         String exp = "Experience: " + counsellor.getExperience();
@@ -54,18 +54,17 @@ public class CounsellorAdapter extends RecyclerView.Adapter<CounsellorAdapter.Vi
         String ach = "Achievements: " + counsellor.getAchievements();
         holder.achievements.setText(ach);
 
-        if(counsellor.getImageUrl().equals("default"))
+        if (counsellor.getImageUrl().equals("default"))
             holder.profileImage.setImageResource(R.mipmap.ic_launcher_round);
         else
             Glide.with(context).load(counsellor.getImageUrl()).into(holder.profileImage);
-
 
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, MessageActivity.class);
-                i.putExtra("userid",counsellor.getId());
+                i.putExtra("userid", counsellor.getId());
                 i.putExtra("fromPerson", "Counsellors");
                 context.startActivity(i);
             }

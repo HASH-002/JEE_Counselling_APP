@@ -19,6 +19,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:padding="5dp"
         android:id="@+id/recycler_view_message_activity"
         app:layout_constraintBottom_toTopOf="@+id/bottom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/background_border"
         app:layout_constraintBottom_toBottomOf="parent">
 
