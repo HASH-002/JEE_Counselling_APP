@@ -12,4 +12,12 @@
     <color name="colorPrimaryDark">#000d3d</color>
     <color name="ButtonColor">#c2bdbf</color>
     <color name="EditTextColor">#0A86F5</color>
+
+    <color name="address">#2F7092</color>
+    <color name="headings">#3797CF</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="gradEnd">#67EFC8</color>
+    <color name="gradStart">#63C9FF</color>
+
 </resources>
