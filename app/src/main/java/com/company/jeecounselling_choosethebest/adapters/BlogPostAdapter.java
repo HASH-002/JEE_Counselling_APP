@@ -1,6 +1,7 @@
 package com.company.jeecounselling_choosethebest.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.company.jeecounselling_choosethebest.CommentsActivity;
 import com.company.jeecounselling_choosethebest.R;
 import com.company.jeecounselling_choosethebest.model.BlogPost;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHolder> {
@@ -57,6 +60,8 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
 
+        viewHolder.setIsRecyclable(false);
+
         BlogPost blogPost = mBlogPosts.get(i);
 
         // Setting username, image and date
@@ -70,7 +75,7 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
 
         //Time stamp will converted into date here
         long millisecond = blogPost.getTimestamp().getTime();
-        String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(millisecond));
+        String dateString = new SimpleDateFormat("MM/dd/yyyy", Locale.US).format(new Date(millisecond));
         viewHolder.blogDate.setText(dateString);
 
         // Description
@@ -78,7 +83,7 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
         viewHolder.descView.setText(desc_data);
 
 
-        final String blogPostId = blogPost.getId();
+        final String blogPostId = blogPost.BlogPostId;
         final String currentUserId = firebaseUser.getUid();
 
 
@@ -140,34 +145,33 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
             }
         });
 
-//          //Get Comments Count
-//        firebaseFirestore.collection("Posts/" + blogPostId + "/Comments").addSnapshotListener(new EventListener<QuerySnapshot>() {
-//            @Override
-//            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-//                if (documentSnapshots != null) {
-//                    if (!documentSnapshots.isEmpty()) {
-//
-//                        String count = documentSnapshots.size() + " Comments";
-//                        viewHolder.blogCommentCount.setText(count );
-//
-//                    } else {
-//                        viewHolder.blogCommentCount.setText("0");
-//                    }
-//                }
-//            }
-//        });
+          //Get Comments Count
+        firebaseFirestore.collection("Posts/" + blogPostId + "/Comments").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                if (documentSnapshots != null) {
+                    if (!documentSnapshots.isEmpty()) {
 
-//        //Comments feature
-//        viewHolder.blogCommentBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent commentIntent = new Intent(context, CommentsActivity.class);
-//                commentIntent.putExtra("blog_post_id", blogPostId);
-//                context.startActivity(commentIntent);
-//
-//            }
-//        });
+                        String count = documentSnapshots.size() + " Comments";
+                        viewHolder.blogCommentCount.setText(count );
+
+                    } else {
+                        viewHolder.blogCommentCount.setText("0");
+                    }
+                }
+            }
+        });
+
+        //Comments feature
+        viewHolder.blogCommentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent commentIntent = new Intent(context, CommentsActivity.class);
+                commentIntent.putExtra("blogPostId", blogPostId);
+                context.startActivity(commentIntent);
+            }
+        });
 
 
     }

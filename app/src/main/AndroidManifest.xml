@@ -17,17 +17,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JEECounsellingChooseTheBEST">
+        <activity android:name=".CommentsActivity"></activity>
         <activity
             android:name=".PostActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".MessageActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".CounsellorsSignUpActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>

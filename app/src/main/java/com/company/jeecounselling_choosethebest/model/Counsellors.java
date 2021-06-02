@@ -1,13 +1,8 @@
 package com.company.jeecounselling_choosethebest.model;
 
-public class Counsellors {
+public class Counsellors extends Users{
 
-    private String firstname;
-    private String lastname;
-    private String email;
-    private String password;
-    private String id;
-    private String imageUrl;
+
     private String experience;
     private String skills;
     private String achievements;
@@ -17,66 +12,14 @@ public class Counsellors {
     public Counsellors() {
     }
 
-    public Counsellors(String firstname, String lastname, String email, String password, String id, String imageUrl,
-                       String experience, String skills, String achievements) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.id = id;
-        this.imageUrl = imageUrl;
+
+    public Counsellors(String firstname, String lastname, String email, String password, String id, String imageUrl, String experience, String skills, String achievements) {
+        super(firstname, lastname, email, password, id, imageUrl);
         this.experience = experience;
         this.skills = skills;
         this.achievements = achievements;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 
     public String getExperience() {
         return experience;

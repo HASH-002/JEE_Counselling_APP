@@ -127,7 +127,7 @@ public class DiscussionFragment extends Fragment {
         });
 
 
-        //When we click on post button(Floating Action Button) then it will send an Explict Intent to PostActicity
+        //When we click on post button(Floating Action Button) then it will send an Explicit Intent to PostActivity
         addPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +151,6 @@ public class DiscussionFragment extends Fragment {
         });
 
 
-
         blogListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
@@ -165,7 +164,7 @@ public class DiscussionFragment extends Fragment {
             }
         });
 
-        Query firstQuery = firebaseFirestore.collection("Posts").orderBy("timestamp",Query.Direction.DESCENDING).limit(3);
+        Query firstQuery = firebaseFirestore.collection("Posts").orderBy("timestamp",Query.Direction.DESCENDING);
 
         firstQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -194,8 +193,6 @@ public class DiscussionFragment extends Fragment {
                         }
                     }
                     isFirstPageFirstLoad = false;
-
-
                 }
 
             }
@@ -208,8 +205,7 @@ public class DiscussionFragment extends Fragment {
     public void loadMorePost(){
         Query nextQuery = firebaseFirestore.collection("Posts")
                 .orderBy("timestamp",Query.Direction.DESCENDING)
-                .startAfter(lastVisible)
-                .limit(3);
+                .startAfter(lastVisible);
 
         nextQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -235,10 +231,5 @@ public class DiscussionFragment extends Fragment {
         });
 
     }
-
-
-
-
-
 
 }
