@@ -2,16 +2,13 @@ package com.company.jeecounselling_choosethebest.model;
 
 public class Counsellors extends Users{
 
-
     private String experience;
     private String skills;
     private String achievements;
 
     // Constructors
-
     public Counsellors() {
     }
-
 
     public Counsellors(String firstname, String lastname, String email, String password, String id, String imageUrl, String experience, String skills, String achievements) {
         super(firstname, lastname, email, password, id, imageUrl);
@@ -19,7 +16,6 @@ public class Counsellors extends Users{
         this.skills = skills;
         this.achievements = achievements;
     }
-
 
     public String getExperience() {
         return experience;

@@ -9,7 +9,6 @@ public class Users {
     private String imageUrl;
 
     // Constructors
-
     public Users() {
     }
 

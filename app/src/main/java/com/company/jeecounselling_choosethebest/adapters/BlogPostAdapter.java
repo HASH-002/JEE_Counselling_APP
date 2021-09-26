@@ -48,7 +48,6 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_blogs_list, viewGroup, false);
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -59,9 +58,7 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-
         viewHolder.setIsRecyclable(false);
-
         BlogPost blogPost = mBlogPosts.get(i);
 
         // Setting username, image and date
@@ -82,82 +79,63 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
         String desc_data = blogPost.getDesc();
         viewHolder.descView.setText(desc_data);
 
-
         final String blogPostId = blogPost.BlogPostId;
         final String currentUserId = firebaseUser.getUid();
-
 
         //Get Likes Count
         firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 if (documentSnapshots != null) {
-                    if (!documentSnapshots.isEmpty()) {
-
-                        String count = documentSnapshots.size() + " Likes";
-                        viewHolder.blogLikeCount.setText(count);
-
-                    } else {
-                        viewHolder.blogLikeCount.setText("0");
-                    }
+                    String count = "0 Likes";
+                    if (!documentSnapshots.isEmpty())
+                        count = documentSnapshots.size() + " Likes";
+                    viewHolder.blogLikeCount.setText(count);
                 }
             }
         });
-
 
         //Get Likes
         firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
                 if (documentSnapshot != null) {
-                    if (documentSnapshot.exists()) {
-
+                    if (documentSnapshot.exists())
                         viewHolder.blogLikeBtn.setImageResource(R.drawable.like_accent);
-                    } else {
+                    else
                         viewHolder.blogLikeBtn.setImageResource(R.drawable.like_grey);
-                    }
                 }
             }
         });
 
-        //Likes Feature
+        // Likes Feature
         viewHolder.blogLikeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).get()
+                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (!task.getResult().exists()) {
-
                             Map<String, Object> likesMap = new HashMap<>();
                             likesMap.put("timestamp", FieldValue.serverTimestamp());
-
                             firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).set(likesMap);
-                        } else {
-
+                        } else
                             firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).delete();
-                        }
                     }
                 });
-
-
             }
         });
 
-          //Get Comments Count
+        //Get Comments Count
         firebaseFirestore.collection("Posts/" + blogPostId + "/Comments").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 if (documentSnapshots != null) {
-                    if (!documentSnapshots.isEmpty()) {
-
-                        String count = documentSnapshots.size() + " Comments";
-                        viewHolder.blogCommentCount.setText(count );
-
-                    } else {
-                        viewHolder.blogCommentCount.setText("0");
-                    }
+                    String count = "0 Comments";
+                    if (!documentSnapshots.isEmpty())
+                        count = documentSnapshots.size() + " Comments";
+                    viewHolder.blogCommentCount.setText(count);
                 }
             }
         });
@@ -166,14 +144,11 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
         viewHolder.blogCommentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent commentIntent = new Intent(context, CommentsActivity.class);
                 commentIntent.putExtra("blogPostId", blogPostId);
                 context.startActivity(commentIntent);
             }
         });
-
-
     }
 
     @Override
@@ -182,16 +157,9 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         public View mView;
-        public TextView descView;
-        public TextView blogDate;
-        public TextView blogUserName;
-        public ImageView blogUserImage;
-        public ImageView blogLikeBtn;
-        public TextView blogLikeCount, blogCommentCount;
-        public ImageView blogCommentBtn;
-
+        public TextView descView,blogDate,blogUserName,blogLikeCount, blogCommentCount;
+        public ImageView blogUserImage,blogLikeBtn,blogCommentBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -199,15 +167,12 @@ public class BlogPostAdapter extends RecyclerView.Adapter<BlogPostAdapter.ViewHo
             blogLikeBtn = mView.findViewById(R.id.blog_like_btn);
             blogLikeCount = mView.findViewById(R.id.blog_like_counter);
             blogCommentBtn = mView.findViewById(R.id.blog_comment_icon);
-
             blogUserName = mView.findViewById(R.id.blog_user_name);
             blogUserImage = mView.findViewById(R.id.blog_user_image);
             blogDate = mView.findViewById(R.id.blog_date);
             descView = mView.findViewById(R.id.blog_desc);
-
             blogLikeCount = mView.findViewById(R.id.blog_like_counter);
             blogCommentCount = mView.findViewById(R.id.blog_comment_count);
         }
-
     }
 }

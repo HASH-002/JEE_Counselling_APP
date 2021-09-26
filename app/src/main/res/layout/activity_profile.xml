@@ -4,16 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:background="@color/white"
     android:elevation="12dp"
-    app:cardCornerRadius="12dp"
     tools:context=".ProfileActivity">
+
+    <include
+        layout="@layout/appbar_default_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_gradient">
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@color/basicBg">
 
         <RelativeLayout
             android:id="@+id/rellay1"
@@ -51,7 +56,6 @@
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
-
             <TextView
                 android:id="@+id/person_address"
                 android:layout_width="wrap_content"
@@ -61,9 +65,8 @@
                 android:fontFamily="sans-serif"
                 android:text="new york, usa"
                 android:textAllCaps="true"
-                android:textColor="@color/address"
+                android:textColor="@color/white"
                 android:textSize="14sp" />
-
 
         </RelativeLayout>
 

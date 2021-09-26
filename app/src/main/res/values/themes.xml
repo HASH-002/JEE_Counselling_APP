@@ -11,7 +11,6 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/MyColor</item>
-        <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.TextAppearance"
@@ -19,4 +18,14 @@
         <item name="android:textColor">@color/MyColor</item>
     </style>
 
+    <style name="MyToolbarStyle" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/MyColor</item>
+        <item name="colorPrimaryVariant">@color/MyColor</item>
+        <item name="colorPrimaryDark">@color/MyColor</item>
+        <!--To change the background of options menu-->
+        <item name="android:itemBackground">@color/MyColor</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/MyColor</item>
+    </style>
 </resources>

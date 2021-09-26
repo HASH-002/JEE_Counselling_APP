@@ -1,16 +1,15 @@
 package com.company.jeecounselling_choosethebest;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.company.jeecounselling_choosethebest.adapters.ViewPagerAdapter;
 import com.company.jeecounselling_choosethebest.fragments.ChatsFragment;
@@ -23,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     // Customized Toolbar
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     // Tab layout
     private TabLayout tabLayout;
@@ -34,14 +33,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Setting Status bar colour
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.MyColor));
+
         toolbar = findViewById(R.id.toolbar_appbar);
 
-        /* **** Adding Logout and Profile Functionality **** */
-
+        // Adding Logout and Profile Functionality
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
                 // Selecting correct menu
                 switch (item.getItemId()) {
                     case R.id.profile:
@@ -70,7 +73,5 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
     }
-
 }

@@ -1,100 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:orientation="vertical"
-android:gravity="center"
-android:padding="12dp"
-android:background="@color/ActivityBgColor"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".CounsellorsSignUpActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ActivityBgColor"
+    tools:context=".CounsellorsSignUpActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="JEE Counselling"
-        android:textColor="@color/MyColor"
-        android:textSize="34sp" />
+    <include
+        layout="@layout/appbar_default_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="15dp"
-        android:hint="Firstname"
-        android:padding="10dp"
-        android:id="@+id/firstname_counsellor"/>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="15dp"
-        android:hint="Lastname"
-        android:padding="10dp"
-        android:id="@+id/lastname_counsellor"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JEE Counselling"
+            android:textColor="@color/MyColor"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="15dp"
-        android:hint="Email"
-        android:padding="10dp"
-        android:id="@+id/email_counsellor"/>
+        <EditText
+            android:id="@+id/firstname_counsellor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Firstname"
+            android:padding="10dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="15dp"
-        android:hint="Password"
-        android:padding="10dp"
-        android:id="@+id/password_counsellor"/>
+        <EditText
+            android:id="@+id/lastname_counsellor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Lastname"
+            android:padding="10dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="15dp"
-        android:hint="Experience"
-        android:padding="10dp"
-        android:id="@+id/experience_counsellor"/>
+        <EditText
+            android:id="@+id/email_counsellor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Email"
+            android:padding="10dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="15dp"
-        android:hint="Skills"
-        android:padding="10dp"
-        android:id="@+id/skills_counsellor"/>
+        <EditText
+            android:id="@+id/password_counsellor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Password"
+            android:padding="10dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginTop="15dp"
-        android:hint="Achievements"
-        android:padding="10dp"
-        android:id="@+id/achievements_counsellor"/>
+        <EditText
+            android:id="@+id/experience_counsellor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Experience"
+            android:padding="10dp" />
 
-    <Button
-        android:id="@+id/register_counsellor_signUp_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15sp"
-        android:background="@drawable/button_background"
-        android:padding="10dp"
-        android:text="REGISTER and Join Counsellors" />
+        <EditText
+            android:id="@+id/skills_counsellor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Skills"
+            android:padding="10dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Already a Counsellor? LogIn"
-        android:layout_marginTop="15dp"
-        android:id="@+id/login_counsellor"/>
+        <EditText
+            android:id="@+id/achievements_counsellor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Achievements"
+            android:padding="10dp" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/register_counsellor_signUp_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:padding="10dp"
+            android:text="REGISTER and Join Counsellors"
+            android:textColor="@color/white"
+            android:background="@color/MyColor"/>
+
+        <TextView
+            android:id="@+id/login_counsellor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Already a Counsellor? LogIn" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,11 +9,10 @@
 
     <include
         android:id="@+id/new_post_toolbar"
-        layout="@layout/appbar_post_layout"
+        layout="@layout/appbar_default_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/new_post_desc"

@@ -14,13 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:background="#D6D1D1">
+        android:background="#1278B5">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/comment_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/profile_placeholder"
+            android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

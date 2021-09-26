@@ -53,33 +53,26 @@ public class DiscussionFragment extends Fragment {
     private DatabaseReference myRef;
     private FirebaseFirestore firebaseFirestore;
 
-    //Declaration of Floating Action Button
+    // Declaration of Floating Action Button
     private FloatingActionButton addPostBtn;
 
     // Flag for user type verification
     private Boolean isCounsellor;
 
-
     private RecyclerView blogListView;
     private ArrayList<BlogPost> blog_list;
     private BlogPostAdapter blogPostAdapter;
 
-    private DocumentSnapshot lastVisible;
-    private Boolean isFirstPageFirstLoad= true;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_discussion, container, false);
 
-        isCounsellor = false;
+        isCounsellor = true;
         addPostBtn = view.findViewById(R.id.add_post_btn);
 
         // Setting Posts
@@ -91,145 +84,69 @@ public class DiscussionFragment extends Fragment {
         blogListView.setHasFixedSize(true);
         blogListView.setAdapter(blogPostAdapter);
 
-
         firebaseFirestore = FirebaseFirestore.getInstance();
-
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         myRef = FirebaseDatabase.getInstance().getReference("Counsellors").child(firebaseUser.getUid());
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 if (dataSnapshot.exists()) {
-                    isCounsellor = true;
                     counsellor = dataSnapshot.getValue(Counsellors.class);
-
                 } else {
+                    isCounsellor = false;
                     myRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
                     myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-
                             user = dataSnapshot.getValue(Users.class);
                         }
                         @Override
                         public void onCancelled(DatabaseError error) {
-
                         }
                     });
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
-
             }
         });
 
-
-        //When we click on post button(Floating Action Button) then it will send an Explicit Intent to PostActivity
+        //When we click on post button (Floating Action Button) then it will send an Explicit Intent to PostActivity
         addPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(getContext(), PostActivity.class);
+                String name, imgUrl;
                 if(isCounsellor){
-
-                    String name = counsellor.getFirstname() + " "+ counsellor.getLastname();
-                    i.putExtra("username",name);
-                    i.putExtra("imageUrl",counsellor.getImageUrl());
-
+                    name = counsellor.getFirstname() + " "+ counsellor.getLastname();
+                    imgUrl = counsellor.getImageUrl();
                 }else{
-
-                    String name = user.getFirstname() + " "+ user.getLastname();
-                    i.putExtra("username",name);
-                    i.putExtra("imageUrl",user.getImageUrl());
-
+                    name = user.getFirstname() + " "+ user.getLastname();
+                    imgUrl = user.getImageUrl();
                 }
+                i.putExtra("username",name);
+                i.putExtra("imageUrl",imgUrl);
                 startActivity(i);
             }
         });
 
-
-        blogListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                Boolean reachedBottom = !recyclerView.canScrollVertically(1);
-                if(reachedBottom){
-                    String desc = lastVisible.getString("desc");
-                    loadMorePost();
-                }
-
-            }
-        });
-
         Query firstQuery = firebaseFirestore.collection("Posts").orderBy("timestamp",Query.Direction.DESCENDING);
-
         firstQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                if(isFirstPageFirstLoad) {
-
-                    if(documentSnapshots.size()>0)
-                    lastVisible = documentSnapshots.getDocuments().get(documentSnapshots.size() - 1);
-                }
-
                 if (documentSnapshots != null) {
-
-                    for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
-                        if (doc.getType() == DocumentChange.Type.ADDED) {
-
-                            String blogPostId = doc.getDocument().getId();
-
-                            BlogPost blogPost = doc.getDocument().toObject(BlogPost.class).withId(blogPostId);
-                            if(isFirstPageFirstLoad) {
-                                blog_list.add(blogPost);
-                            }else{
-                                blog_list.add(0,blogPost);
-                            }
-                            blogPostAdapter.notifyDataSetChanged();
-
-                        }
-                    }
-                    isFirstPageFirstLoad = false;
-                }
-
-            }
-        });
-
-
-        return view;
-    }
-
-    public void loadMorePost(){
-        Query nextQuery = firebaseFirestore.collection("Posts")
-                .orderBy("timestamp",Query.Direction.DESCENDING)
-                .startAfter(lastVisible);
-
-        nextQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-
-                if (!documentSnapshots.isEmpty()) {
-
-                    lastVisible = documentSnapshots.getDocuments().get(documentSnapshots.size()-1);
-
                     for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
                         if (doc.getType() == DocumentChange.Type.ADDED) {
                             String blogPostId = doc.getDocument().getId();
-
                             BlogPost blogPost = doc.getDocument().toObject(BlogPost.class).withId(blogPostId);
                             blog_list.add(blogPost);
                             blogPostAdapter.notifyDataSetChanged();
-
                         }
                     }
                 }
-
             }
         });
-
+        return view;
     }
-
 }

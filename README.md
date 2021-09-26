@@ -37,8 +37,8 @@ the counsellors connecting from the country different parts of the country.
 
 ## Technologies and Tools used
 * JAVA
-*	Android Studio
-*	Firebase
+* Android Studio
+* Firebase
 
 ## Development Responsibility
-This project is devloped maintained by Hasan Koser.
+This project is developed and maintained by [@Hasan Koser](https://www.github.com/HASH-002).

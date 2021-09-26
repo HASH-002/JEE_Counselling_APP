@@ -2,13 +2,17 @@ package com.company.jeecounselling_choosethebest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -49,7 +53,6 @@ public class CommentsActivity extends AppCompatActivity {
     private RecyclerView comment_list;
     private CommentsAdapter commentsRecyclerAdapter;
     private ArrayList<Comments> commentsList;
-    private DividerItemDecoration dividerItemDecoration;
     private LinearLayoutManager linearLayoutManager;
 
     @Override
@@ -57,9 +60,14 @@ public class CommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
 
+        // Setting Status bar colour
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.MyColor));
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
 
         // Getting intent data
         intent = getIntent();
@@ -76,7 +84,6 @@ public class CommentsActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         comment_list.setLayoutManager(linearLayoutManager);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        dividerItemDecoration = new DividerItemDecoration(comment_list.getContext(), linearLayoutManager.getOrientation());
         comment_list.setAdapter(commentsRecyclerAdapter);
 
         // Adding data to the list and displaying in the screen
@@ -84,14 +91,9 @@ public class CommentsActivity extends AppCompatActivity {
                 .addSnapshotListener(CommentsActivity.this, new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-
                         if (!documentSnapshots.isEmpty()) {
-
                             for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
-
                                 if (doc.getType() == DocumentChange.Type.ADDED) {
-
-                                    String commentId = doc.getDocument().getId();
                                     Comments comments = doc.getDocument().toObject(Comments.class);
                                     commentsList.add(comments);
                                     commentsRecyclerAdapter.notifyDataSetChanged();
@@ -105,27 +107,26 @@ public class CommentsActivity extends AppCompatActivity {
         comment_post_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String comment_message = comment_field.getText().toString().trim();
+                if (!TextUtils.isEmpty(comment_message)) {
+                    Map<String, Object> commentsMap = new HashMap<>();
+                    commentsMap.put("message", comment_message);
+                    commentsMap.put("id", firebaseUser.getUid());
+                    commentsMap.put("timestamp", FieldValue.serverTimestamp());
 
-                String comment_message = comment_field.getText().toString();
-
-                Map<String, Object> commentsMap = new HashMap<>();
-                commentsMap.put("message", comment_message);
-                commentsMap.put("id", firebaseUser.getUid());
-                commentsMap.put("timestamp", FieldValue.serverTimestamp());
-
-                firebaseFirestore.collection("Posts/" + blogPostId + "/Comments").add(commentsMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentReference> task) {
-
-                        if(!task.isSuccessful()){
-                            Toast.makeText(CommentsActivity.this, "Error Posting Comment : " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            comment_field.setText("");
+                    firebaseFirestore.collection("Posts/" + blogPostId + "/Comments")
+                            .add(commentsMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(CommentsActivity.this, "Error Posting Comment : " +
+                                        Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                            } else
+                                comment_field.setText("");
                         }
-
-                    }
-                });
+                    });
+                }else
+                    Toast.makeText(CommentsActivity.this, "Empty Comment", Toast.LENGTH_SHORT).show();
             }
         });
 

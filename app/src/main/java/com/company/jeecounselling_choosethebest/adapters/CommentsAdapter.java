@@ -28,7 +28,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
 
     private ArrayList<Comments> commentsList;
     private Context context;
-
     private DatabaseReference myRefUsers, myRefCounsellor;
 
     public CommentsAdapter(ArrayList<Comments> commentsList, Context context) {
@@ -38,10 +37,8 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         this.context = context;
     }
 
-
     @Override
     public CommentsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_comment, parent, false);
         CommentsAdapter.ViewHolder viewHolder = new CommentsAdapter.ViewHolder(view);
@@ -50,19 +47,14 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(final CommentsAdapter.ViewHolder holder, int position) {
-
         holder.setIsRecyclable(false);
-
         Comments comment = commentsList.get(position);
-
         holder.comment_message.setText(comment.getMessage());
 
         myRefUsers.child(comment.getId()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if(snapshot.exists()){
-
                     Users user = snapshot.getValue(Users.class);
                     assert user != null;
                     String name = user.getFirstname() + " " + user.getLastname();
@@ -71,13 +63,10 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                         holder.commentUserImage.setImageResource(R.mipmap.ic_launcher);
                     else
                         Glide.with(context).load(user.getImageUrl()).into(holder.commentUserImage);
-
-
                 }else{
                     myRefCounsellor.child(comment.getId()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                             Counsellors user = snapshot.getValue(Counsellors.class);
                             assert user != null;
                             String name = user.getFirstname() + " " + user.getLastname();
@@ -86,24 +75,18 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
                                 holder.commentUserImage.setImageResource(R.mipmap.ic_launcher_round);
                             else
                                 Glide.with(context).load(user.getImageUrl()).into(holder.commentUserImage);
-
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -114,9 +97,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         public View mView;
-
         public TextView comment_message,commentUserName;
         public ImageView commentUserImage;
 

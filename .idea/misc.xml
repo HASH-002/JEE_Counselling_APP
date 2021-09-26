@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/background_gradient.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/background_right.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/button_background.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/edit_text_background.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/ic_add_box.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/ic_chat.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/ic_exit_to_app.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/ic_send.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/drawable/side_nav_bar.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_comments.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_counsellors_sign_up.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_login.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_main.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_message.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_post.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_sign_up.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/activity_start.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/appbar.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/appbar_layout.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/appbar_post_layout.xml" value="0.2046875" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/fragment_chats.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/fragment_counsellors.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/fragment_discussion.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/fragment_users.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/item_blogs_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/item_chat_left.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/item_chat_right.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/item_comment.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/item_counsellor.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/layout/item_user.xml" value="0.1897644927536232" />
+        <entry key="..\:/AndroidStudioProjects/JEECounsellingChoosetheBEST/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
@@ -25,7 +67,7 @@
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="13">
+        <list size="14">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
           <item index="2" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
@@ -39,11 +81,12 @@
           <item index="10" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
           <item index="11" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
           <item index="12" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="lombok.NonNull" />
         </list>
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -11,7 +11,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/appbar_layout"
+        layout="@layout/appbar_chat_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_send"
-            android:backgroundTint="@color/black"/>
+            android:backgroundTint="@color/black" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
